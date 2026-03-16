@@ -6,9 +6,8 @@
     <title>Perfil Vidros Pro - Login</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; position: relative; }
         
-        /* Telas */
         #tela-login { text-align: center; }
         #app-principal { display: none; }
 
@@ -16,10 +15,14 @@
         label { font-weight: bold; display: block; margin: 15px 0 5px; color: #444; text-align: left; }
         input, select { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; margin-bottom: 10px; background: #fafafa; }
         
+        /* Container da Senha para o Olhinho */
+        .pass-container { position: relative; width: 100%; }
+        .toggle-btn { position: absolute; right: 12px; top: 14px; cursor: pointer; font-size: 20px; user-select: none; opacity: 0.6; }
+
         button { width: 100%; padding: 16px; border: none; border-radius: 8px; font-weight: bold; font-size: 18px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
         .btn-blue { background-color: #1a73e8; color: white; }
         .btn-blue:active { background-color: #1557b0; transform: scale(0.98); }
-        .btn-green { background-color: #25d366; color: white; margin-top: 15px; display: none; text-decoration: none; text-align: center; line-height: 50px; }
+        .btn-green { background-color: #25d366; color: white; margin-top: 15px; display: none; text-decoration: none; text-align: center; line-height: 50px; border-radius: 8px; font-weight: bold; }
         
         #resultado { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f0fe; display: none; border-left: 5px solid #1a73e8; }
         .logo { font-size: 60px; margin-bottom: 10px; }
@@ -30,81 +33,27 @@
     <div id="tela-login" class="card">
         <div class="logo">💎</div>
         <h2>Perfil Vidros Pro</h2>
-        <p style="color: #666;">Área Restrita para Parceiros</p>
-        <input type="text" id="user" placeholder="Seu usuário">
-        <input type="password" id="pass" placeholder="Sua senha">
+        <p style="color: #666;">Acesse sua conta</p>
+        <input type="text" id="user" placeholder="Usuário">
+        
+        <div class="pass-container">
+            <input type="password" id="pass" placeholder="Senha">
+            <span class="toggle-btn" onclick="toggleSenha()">👁️</span>
+        </div>
+
         <button class="btn-blue" onclick="verificarLogin()">ENTRAR</button>
-        <p style="font-size: 13px; color: #999; margin-top: 25px;">Esqueceu a senha? Fale com o Pimentel.</p>
+        <p style="font-size: 12px; color: #999; margin-top: 25px;">Senha padrão: Pimentel0318</p>
     </div>
 
     <div id="app-principal" class="card" style="max-width: 500px;">
-        <h2 style="font-size: 22px;">Orçamento Perfil Vidros</h2>
-        
+        <h2>Orçamento Perfil Vidros</h2>
         <label>Cliente:</label>
         <input type="text" id="cliente" placeholder="Nome do cliente">
-
         <label>WhatsApp:</label>
-        <input type="number" id="tel" placeholder="DDD + Número">
-
+        <input type="number" id="tel" placeholder="Ex: 27999991234">
         <label>Vidro:</label>
         <select id="vidro">
             <option value="132.80">Incolor 6mm (R$ 132,80)</option>
             <option value="165.92">Incolor 8mm (R$ 165,92)</option>
             <option value="166.90">Verde/Fumê 6mm (R$ 166,90)</option>
-            <option value="205.14">Verde/Fumê 8mm (R$ 205,14)</option>
-        </select>
-
-        <label>Medidas (m):</label>
-        <div style="display: flex; gap: 10px;">
-            <input type="number" id="largura" step="0.01" placeholder="Largura">
-            <input type="number" id="altura" step="0.01" placeholder="Altura">
-        </div>
-
-        <button class="btn-blue" onclick="calcular()">CALCULAR AGORA</button>
-
-        <div id="resultado"></div>
-        <a id="btnZap" class="btn-green" target="_blank">ENVIAR PARA WHATSAPP</a>
-    </div>
-
-    <script>
-        function verificarLogin() {
-            const u = document.getElementById('user').value.toLowerCase();
-            const s = document.getElementById('pass').value;
-
-            // NOVA SENHA PADRÃO DEFINIDA
-            if(u === "pimentel" && s === "Pimentel0318") {
-                document.getElementById('tela-login').style.display = 'none';
-                document.getElementById('app-principal').style.display = 'block';
-            } else {
-                alert("Acesso negado! Verifique o usuário e a senha.");
-            }
-        }
-
-        function calcular() {
-            const precoVidro = parseFloat(document.getElementById('vidro').value);
-            const l = parseFloat(document.getElementById('largura').value);
-            const a = parseFloat(document.getElementById('altura').value);
-            const cliente = document.getElementById('cliente').value || "Cliente";
-            const tel = document.getElementById('tel').value;
-
-            if (l > 0 && a > 0) {
-                const total = (l * a * precoVidro) * 2;
-                
-                const res = document.getElementById('resultado');
-                res.style.display = 'block';
-                res.innerHTML = `<strong>Resumo do Pedido:</strong><br>Medidas: ${l}m x ${a}m<br><strong>Total: R$ ${total.toFixed(2)}</strong>`;
-
-                const zap = document.getElementById('btnZap');
-                zap.style.display = 'block';
-                const msg = `Olá ${cliente}, segue orçamento da Perfil Vidros:\n\n` +
-                            `📏 Medidas: ${l}m x ${a}m\n` +
-                            `💰 Valor Total: R$ ${total.toFixed(2)}`;
-                
-                zap.href = `https://wa.me/55${tel}?text=${encodeURIComponent(msg)}`;
-            } else {
-                alert("Por favor, preencha as medidas!");
-            }
-        }
-    </script>
-</body>
-</html>
+            <option value="205
