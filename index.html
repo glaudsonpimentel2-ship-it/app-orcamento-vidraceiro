@@ -3,57 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil Vidros Pro - Login</title>
+    <title>Perfil Vidros Pro</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; position: relative; }
-        
-        #tela-login { text-align: center; }
+        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .card { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); width: 90%; max-width: 400px; text-align: center; }
+        input { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        .pass-container { position: relative; display: flex; align-items: center; }
+        .toggle-btn { position: absolute; right: 15px; cursor: pointer; font-size: 22px; z-index: 10; }
+        button { width: 100%; padding: 15px; background: #1a73e8; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; font-size: 18px; }
         #app-principal { display: none; }
-
-        h2 { color: #1a73e8; margin-bottom: 20px; }
-        label { font-weight: bold; display: block; margin: 15px 0 5px; color: #444; text-align: left; }
-        input, select { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; margin-bottom: 10px; background: #fafafa; }
-        
-        /* Container da Senha para o Olhinho */
-        .pass-container { position: relative; width: 100%; }
-        .toggle-btn { position: absolute; right: 12px; top: 14px; cursor: pointer; font-size: 20px; user-select: none; opacity: 0.6; }
-
-        button { width: 100%; padding: 16px; border: none; border-radius: 8px; font-weight: bold; font-size: 18px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
-        .btn-blue { background-color: #1a73e8; color: white; }
-        .btn-blue:active { background-color: #1557b0; transform: scale(0.98); }
-        .btn-green { background-color: #25d366; color: white; margin-top: 15px; display: none; text-decoration: none; text-align: center; line-height: 50px; border-radius: 8px; font-weight: bold; }
-        
-        #resultado { margin-top: 20px; padding: 15px; border-radius: 8px; background: #e8f0fe; display: none; border-left: 5px solid #1a73e8; }
-        .logo { font-size: 60px; margin-bottom: 10px; }
     </style>
 </head>
 <body>
 
     <div id="tela-login" class="card">
-        <div class="logo">💎</div>
-        <h2>Perfil Vidros Pro</h2>
-        <p style="color: #666;">Acesse sua conta</p>
+        <h2>💎 Perfil Vidros Pro</h2>
         <input type="text" id="user" placeholder="Usuário">
-        
         <div class="pass-container">
             <input type="password" id="pass" placeholder="Senha">
-            <span class="toggle-btn" onclick="toggleSenha()">👁️</span>
+            <span class="toggle-btn" onclick="verSenha()">👁️</span>
         </div>
-
-        <button class="btn-blue" onclick="verificarLogin()">ENTRAR</button>
-        <p style="font-size: 12px; color: #999; margin-top: 25px;">Senha padrão: Pimentel0318</p>
+        <button onclick="logar()">ENTRAR</button>
     </div>
 
-    <div id="app-principal" class="card" style="max-width: 500px;">
-        <h2>Orçamento Perfil Vidros</h2>
-        <label>Cliente:</label>
-        <input type="text" id="cliente" placeholder="Nome do cliente">
-        <label>WhatsApp:</label>
-        <input type="number" id="tel" placeholder="Ex: 27999991234">
-        <label>Vidro:</label>
-        <select id="vidro">
-            <option value="132.80">Incolor 6mm (R$ 132,80)</option>
-            <option value="165.92">Incolor 8mm (R$ 165,92)</option>
-            <option value="166.90">Verde/Fumê 6mm (R$ 166,90)</option>
-            <option value="205
+    <div id="app-principal" class="card">
+        <h2>✅ Sistema Liberado!</h2>
+        <p>Olá Pimentel, o app está pronto.</p>
+        <button onclick="location.reload()" style="background:#666;">SAIR</button>
+    </div>
+
+    <script>
+        function verSenha() {
+            var campo = document.getElementById("pass");
+            var btn = document.querySelector(".toggle-btn");
+            if (campo.type === "password") {
+                campo.type = "text";
+                btn.innerHTML = "🙈";
+            } else {
+                campo.type = "password";
+                btn.innerHTML = "👁️";
+            }
+        }
+
+        function logar() {
+            var s = document.getElementById("pass").value;
+            // A SENHA É: Pimentel0318
+            if (s === "Pimentel0318") {
+                document.getElementById("tela-login").style.display = "none";
+                document.getElementById("app-principal").style.display = "block";
+            } else {
+                alert("Senha incorreta! Verifique o maiúsculo.");
+            }
+        }
+    </script>
+</body>
+</html>
