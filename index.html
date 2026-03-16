@@ -3,54 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil Vidros Pro - Orçamento</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
-        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); width: 100%; max-width: 500px; box-sizing: border-box; transition: transform 0.2s; }
-        .logo-container { text-align: center; margin-bottom: 25px; }
-        .logo-icon { font-size: 55px; color: #1a73e8; margin-bottom: 5px; }
-        .logo-text { font-size: 24px; font-weight: bold; color: #333; margin: 0; }
-        .logo-text span { color: #1a73e8; font-style: italic; }
-        h2 { color: #1a73e8; margin-top: 0; margin-bottom: 25px; text-align: center; font-size: 22px; }
-        label { display: block; font-weight: bold; margin-top: 15px; color: #555; font-size: 14px; }
-        input, select { width: 100%; padding: 15px; margin: 8px 0; border: 1px solid #e1e8ed; border-radius: 10px; box-sizing: border-box; font-size: 16px; background: #fafbfc; transition: border-color 0.2s; }
-        input:focus, select:focus { border-color: #1a73e8; outline: none; background: white; }
-        .row { display: flex; gap: 15px; }
-        .col { flex: 1; }
-        button { width: 100%; padding: 18px; background: #1a73e8; color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 18px; transition: background 0.2s; }
-        button:hover { background: #1557b0; }
-        #res { margin-top: 25px; padding: 20px; background: #e8f0fe; border-radius: 12px; text-align: left; display: none; border-left: 6px solid #1a73e8; font-size: 18px; color: #333; }
-        #res strong { color: #1a73e8; font-size: 20px; }
-        .btn-zap { background: #25d366; text-decoration: none; display: none; line-height: 55px; color: white; font-weight: bold; border-radius: 12px; margin-top: 15px; text-align: center; font-size: 18px; transition: background 0.2s; }
-        .btn-zap:hover { background: #1ebd5a; }
-        .input-icon-container { position: relative; }
-        .input-icon { position: absolute; left: 15px; top: 18px; color: #888; font-size: 18px; }
-        .icon-input { padding-left: 45px; }
-    </style>
+    <title>Perfil Vidros Pro</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 15px; }
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 450px; box-sizing: border-box; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .logo-diamond { font-size: 50px; margin-bottom: 5px; }
+        .header h1 { font-size: 22px; color: #1a73e8; margin: 0; text-transform: uppercase; letter-spacing: 1px; }
+        .header span { color: #333; font-style: italic; }
+        label { display: block; font-weight: bold; margin-top: 15px; color: #444; font-size: 14px; }
+        .input-group { position: relative; margin: 5px 0; }
+        .input-group .material-icons { position: absolute; left: 12px; top: 13px; color: #1a73e8; font-size: 20px; }
+        input, select { width: 100%; padding: 12px 12px 12px 40px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 16px; background: #fafafa; }
+        select { padding-left: 12px; }
+        .row { display: flex; gap: 10px; }
+        .col { flex: 1; }
+        button { width: 100%; padding: 16px; background: #1a73e8; color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 18px; }
+        #res { margin-top: 20px; padding: 15px; background: #e8f0fe; border-radius: 12px; display: none; border-left: 5px solid #1a73e8; }
+        .btn-zap { background: #25d366; text-decoration: none; display: none; line-height: 50px; color: white; font-weight: bold; border-radius: 12px; margin-top: 15px; text-align: center; }
+    </style>
 </head>
 <body>
 
-    <div id="app" class="card">
-        <div class="logo-container">
-            <div class="logo-icon">💎</div>
-            <p class="logo-text">PERFIL VIDROS <span>PRO</span></p>
+    <div class="card">
+        <div class="header">
+            <div class="logo-diamond">💎</div>
+            <h1>Perfil Vidros <span>Pro</span></h1>
         </div>
-        
-        <h2>Orçamento Rápido</h2>
-        
-        <label>Cliente:</label>
-        <div class="input-icon-container">
-            <span class="material-icons input-icon">person</span>
-            <input type="text" id="cli" class="icon-input" placeholder="Nome do Cliente">
+
+        <label>Nome do Cliente:</label>
+        <div class="input-group">
+            <span class="material-icons">person</span>
+            <input type="text" id="cli" placeholder="Ex: Sr. Pimentel">
         </div>
-        
+
         <label>WhatsApp:</label>
-        <div class="input-icon-container">
-            <span class="material-icons input-icon">phone_android</span>
-            <input type="number" id="zap" class="icon-input" placeholder="5527999999999">
+        <div class="input-group">
+            <span class="material-icons">phone_iphone</span>
+            <input type="number" id="zap" placeholder="DDD + Número">
         </div>
-        
+
         <label>Tipo de Vidro:</label>
         <select id="vid">
             <option value="132.80">Incolor 6mm (R$ 132,80)</option>
@@ -63,25 +56,31 @@
         <select id="kt">
             <option value="0">Nenhum</option>
             <option value="135.00">F1-1,00 (R$ 135,00)</option>
-            <option value="149.00">F1-1,20 (R$ 149,00)</option>
             <option value="158.00">F1-1,33 (R$ 158,00)</option>
             <option value="169.00">F1-1,50 (R$ 169,00)</option>
         </select>
 
         <div class="row">
-            <div class="col"><label>Largura (m):</label><input type="number" id="lar" step="0.01" placeholder="Ex: 1.32"></div>
-            <div class="col"><label>Altura (m):</label><input type="number" id="alt" step="0.01" value="1.80"></div>
+            <div class="col">
+                <label>Largura:</label>
+                <input type="number" id="lar" step="0.01" style="padding-left:12px;">
+            </div>
+            <div class="col">
+                <label>Altura:</label>
+                <input type="number" id="alt" step="0.01" value="1.80" style="padding-left:12px;">
+            </div>
         </div>
 
-        <label>Mão de Obra / Lucro (R$):</label>
-        <div class="input-icon-container">
-            <span class="material-icons input-icon">attach_money</span>
-            <input type="number" id="mao" class="icon-input" value="0">
+        <label>Mão de Obra (R$):</label>
+        <div class="input-group">
+            <span class="material-icons">payments</span>
+            <input type="number" id="mao" value="0">
         </div>
 
-        <button onclick="calc()">CALCULAR ORÇAMENTO</button>
+        <button onclick="calc()">CALCULAR PREÇO</button>
+
         <div id="res"></div>
-        <a id="linkZap" class="btn-zap" target="_blank">ENVIAR WHATSAPP</a>
+        <a id="linkZap" class="btn-zap" target="_blank">ENVIAR PARA WHATSAPP</a>
     </div>
 
     <script>
@@ -95,13 +94,15 @@
             if (l > 0 && a > 0) {
                 const area = l * a;
                 const total = (area * v) + k + m;
-                document.getElementById("res").style.display = "block";
-                document.getElementById("res").innerHTML = "Área: " + area.toFixed(2) + " m²<br><strong>Total: R$ " + total.toFixed(2) + "</strong>";
+                const resDiv = document.getElementById("res");
+                resDiv.style.display = "block";
+                resDiv.innerHTML = `<strong>Resumo:</strong><br>Área: ${area.toFixed(2)} m²<br><strong>VALOR TOTAL: R$ ${total.toFixed(2)}</strong>`;
                 
-                document.getElementById("linkZap").style.display = "block";
-                const msg = "*Orçamento Perfil Vidros*\nCliente: " + document.getElementById("cli").value + "\nTotal: R$ " + total.toFixed(2);
-                document.getElementById("linkZap").href = "https://wa.me/" + document.getElementById("zap").value + "?text=" + encodeURIComponent(msg);
-            } else { alert("Preencha largura e altura!"); }
+                const zap = document.getElementById("linkZap");
+                zap.style.display = "block";
+                const msg = `*Orçamento Perfil Vidros*\nCliente: ${document.getElementById("cli").value}\nTotal: R$ ${total.toFixed(2)}`;
+                zap.href = `https://wa.me/${document.getElementById("zap").value}?text=${encodeURIComponent(msg)}`;
+            } else { alert("Informe as medidas!"); }
         }
     </script>
 </body>
